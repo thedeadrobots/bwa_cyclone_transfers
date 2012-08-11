@@ -1,0 +1,13 @@
+%fieldset
+  .control-group
+    = f.label :name
+    = f.text_field :name, :class => "input-xlarge" 
+    
+    = f.label :email
+    = f.text_field :email, :class => "input-xlarge" 
+    = f.label :password
+    = f.password_field :password, :class => "input-xlarge" 
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, :class => "input-xlarge" 
+
+  = f.submit :value => "Sign Up!", :class => "btn btn-primary"
