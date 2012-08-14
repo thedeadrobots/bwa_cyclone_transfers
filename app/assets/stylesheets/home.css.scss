@@ -1,0 +1,21 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.masthead, .masthead h1 {
+	text-align:center;
+	font-size:2.2em;
+	padding: 20px;
+	line-height:70px;
+}
+
+.jumbo .btn-large {
+font-size: 20px;
+font-weight: normal;
+padding: 14px 24px;
+margin-right: 10px;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+
+}

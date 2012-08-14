@@ -1,0 +1,13 @@
+= if object.errors.any?
+  .alert.alert-error 
+    %h2
+      = pluralize(object.errors.count, "error")
+      prohibited this 
+      = object.class.to_s.underscore.humanize.downcase
+      from being saved
+
+    %p There were problems with these fields:
+    %ul
+      = object.errors.full_messages.each do |message|
+        %li  
+          = message

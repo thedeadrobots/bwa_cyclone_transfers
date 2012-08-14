@@ -1,9 +1,9 @@
-%h1 Sign Up!
+%h1 Edit Your Profile
 
 .form-horizontal
   = form_for @user do |f|
     = render 'shared/error_messages', :object => f.object
     = render 'fields', :f => f
 
-    = f.submit :value => "Sign Up!", :class => "btn btn-primary"
-  
+    = f.submit :value => "Update Profile", :class => "btn btn-primary"
+	
