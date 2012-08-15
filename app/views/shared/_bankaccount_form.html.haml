@@ -2,7 +2,9 @@
   = form_for(@bankaccount) do |f| 
     = render 'shared/error_messages', object: f.object
     .field
-      %h4= 'Add New Bank Account: '
+      %h2 Add a new bank account: 
+      %h4= 'Just enter your account number, give it a name and we will download the rest' 
+      %br
       = f.text_field :account_name, placeholder: "Account Name...", :class => "input-xlarge"
       = f.text_field :account_number, placeholder: "Account Number...", :class => "input-xlarge"
   

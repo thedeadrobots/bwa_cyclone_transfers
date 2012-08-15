@@ -2,6 +2,7 @@ class Bankaccount < ActiveRecord::Base
   attr_accessible :account_number, :balance, :user_id, :account_name
   after_create :add_amount
   belongs_to :user
+  default_scope order: 'bankaccounts.created_at DESC'
   
   validates :account_number, :numericality => true
   
