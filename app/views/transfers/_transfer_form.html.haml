@@ -1,11 +1,17 @@
 .add-account
-  = form_for(@transfer) do |f| 
+  = form_for(@new_transfer) do |f| 
     = render 'shared/error_messages', object: f.object
-    .field
+    .field-transfer
       %h2 Transfer Money Now!: 
       %h4= 'Just enter your account number, give it a name and we will download the rest' 
       %br
-      = f.text_field :account_name, placeholder: "Account Name...", :class => "input-xlarge"
-      = f.text_field :account_number, placeholder: "Account Number...", :class => "input-xlarge"
-  
+      
+      = f.label "Which account do you want to transfer from:"
+      = f.collection_select(:from, current_user.bankaccounts, :account_number, :account_balance)
+      = f.label "Recipient:"
+      = f.collection_select(:to_user_id, User.find(:all), :id, :name)
+
+      = f.label "Amount"
+      = f.text_field(:amount)
+     
       = f.submit "Transfer", class: "btn btn-large btn-primary"

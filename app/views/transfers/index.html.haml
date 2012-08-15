@@ -6,10 +6,20 @@
 
   .span8
     ~ unless !current_user?(@user)
-      -if @user.transfers.any?
-        %h2 
-          Transfer History:  
-          ~@user.transfers.count
-          Listed
+      = render 'transfer_form'
+      %h1 Transfers I've Received
+      -if @transfers_to_me.any?
+        Transfer History:  
+        ~@transfers_to_me.count
         %ol.transfers
-          ~render @transfers
+          ~render 'transfers_to_me'
+
+
+      %h1 Transfers I've Made
+      -if @user.transfers.any?
+        Transfer History:  
+        ~@user.transfers.count
+        Listed
+      
+      %ol.transfers
+        ~render @transfers

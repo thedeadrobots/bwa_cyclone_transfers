@@ -1,3 +1,5 @@
+
+
 %li
   .content
     %h3.left
@@ -11,7 +13,8 @@
     %h3.left 
       Recipient:  
       %span.small= User.find(transfer.to_user_id).name
-    .clear
+      %span.small= transfer.id
+    .clear 
     %h3.left
       Amount: 
       %span.small= number_to_currency(transfer.amount)
