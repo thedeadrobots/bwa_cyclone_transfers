@@ -60,6 +60,7 @@ Cyclone::Application.routes.draw do
    match '/signup', to: 'users#new'
    match '/signin', to: 'sessions#new'
    match '/signout', to: 'sessions#destroy' 
+   match '/upload', to: 'bankaccounts#upload'
    
    match '/search', to: 'users#search'
    

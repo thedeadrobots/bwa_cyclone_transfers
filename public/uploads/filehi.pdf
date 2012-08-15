@@ -1,0 +1,6 @@
+for i in {1..10}
+do
+  for j in {1..5}
+    cp bank_statement.pdf bank_statement-$i$j.pdf
+  done
+done

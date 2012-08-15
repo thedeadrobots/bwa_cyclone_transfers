@@ -11,6 +11,7 @@
     %li
       = image_tag("/mysteryman.jpg", :class => "gravatar")
       = link_to user.name, user
+      %p= raw user.profile_statement
 		
 = will_paginate
 	

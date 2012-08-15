@@ -56,6 +56,14 @@ class UsersController < ApplicationController
     render :partial => 'users/search_results'
   end
   
+  
+  def upload
+    uploaded_io = params[:bankaccount][:bankstatement]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'w') do |file|
+      file.write(uploaded_io.read)
+    end
+  end
+  
   private
     
     def correct_user

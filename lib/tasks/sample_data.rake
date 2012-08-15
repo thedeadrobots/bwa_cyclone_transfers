@@ -18,14 +18,19 @@ namespace :db do
     
     users = User.all
     users.each do |user|
+    i = 1
       5.times do
         account_number = (Faker::Address.zip + Faker::Address.zip).gsub(/-/, "")
         account_name = Faker::Company.name
         balance = rand(1000) + (1/rand(1..10).to_f * 100).to_i / 100.to_f
-        puts account_number
+        puts i
+        bankstatement = "bankstatement-" + user.id.to_s + i.to_s + ".pdf"
+        puts bankstatement
+        i += 1
         user.bankaccounts.create!(account_number: account_number,
                           balance: balance,
-                          account_name: account_name ) 
+                          account_name: account_name,
+                          bankstatement: bankstatement)    
       end
     end
     

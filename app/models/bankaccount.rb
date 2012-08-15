@@ -1,5 +1,5 @@
 class Bankaccount < ActiveRecord::Base
-  attr_accessible :account_number, :balance, :user_id, :account_name
+  attr_accessible :account_number, :balance, :user_id, :account_name, :bankstatement
   after_create :add_amount
   belongs_to :user
   default_scope order: 'bankaccounts.created_at DESC'

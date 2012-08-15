@@ -3,7 +3,16 @@ class BankaccountsController < ApplicationController
 
   
   def create
+    
+    uploaded_io = params[:bankaccount][:bankstatement]
+    filename = "bankstatement-" + current_user.id.to_s + rand(1..10).to_s+".pdf"
+    File.open(Rails.root.join('public', 'uploads', filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    params[:bankaccount][:bankstatement] = filename
+
     @bankaccount = current_user.bankaccounts.build(params[:bankaccount])
+    
     if @bankaccount.save
       flash[:success] = "Bank Account Added & Balance Downloaded"
       redirect_to current_user
@@ -20,6 +29,12 @@ class BankaccountsController < ApplicationController
     redirect_to current_user  
   end
   
+  def upload
+    file = params[:bankaccount][:bankstatement]
+    File.open(Rails.root.join('public', 'uploads', file.original_filename), 'wb') do |f|
+      f.write(file.read)
+    end
+  end
 
       
 end
