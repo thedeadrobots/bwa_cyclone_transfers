@@ -1,4 +1,13 @@
 @import "bootstrap";
+
+.left { float: left; }
+.clear { clear: both; }
+.right { float: right; }
+.small {font-size: .7em; }
+
+.round {
+  margin-top:20px;
+}
 #logo {
   color: #fff;
   font-size:2em;
@@ -63,4 +72,39 @@ aside {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+
+/* bankaccounts */
+
+.bankaccounts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+.add-account {
+	padding:20px;
+	background: #f9f9f9;
+	
 }

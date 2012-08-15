@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
+  has_many :bankaccounts
 
 
   validates(:name, presence: true)

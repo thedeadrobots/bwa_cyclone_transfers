@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120811064036) do
+ActiveRecord::Schema.define(:version => 20120815000318) do
+
+  create_table "bankaccounts", :force => true do |t|
+    t.integer  "account_number"
+    t.float    "balance"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "account_name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

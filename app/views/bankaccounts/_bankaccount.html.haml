@@ -1,0 +1,18 @@
+%li
+  .content
+    %h3.left 
+      Account Name:  
+      %span.small= bankaccount.account_name.capitalize
+    .clear
+    %h3.left
+      Account Number:
+      %span.small= bankaccount.account_number
+    .clear
+    %h3.left 
+      Account Balance: 
+      %span.small= number_to_currency(bankaccount.balance)
+    .clear
+    %p
+      = link_to "Delete", bankaccount, method: :delete, data: { confirm: "Are you sure?" }, title: bankaccount.account_number
+      &nbsp; Account Created: 
+      = time_ago_in_words(bankaccount.created_at)

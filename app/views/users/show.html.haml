@@ -4,4 +4,13 @@
       =image_tag("/mysteryman.jpg", :class => "gravatar")
       %h1= @user.name
 
-
+  .span8
+    = render 'shared/bankaccount_form'
+    = unless !current_user?(@user)
+      -if @user.bankaccounts.any?
+        %h2 
+          My Bank Accounts:  
+          ~@user.bankaccounts.count
+          Listed
+        %ol.bankaccounts
+          ~render @bankaccounts

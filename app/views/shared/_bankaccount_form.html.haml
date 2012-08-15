@@ -1,0 +1,9 @@
+.add-account
+  = form_for(@bankaccount) do |f| 
+    = render 'shared/error_messages', object: f.object
+    .field
+      %h4= 'Add New Bank Account: '
+      = f.text_field :account_name, placeholder: "Account Name...", :class => "input-xlarge"
+      = f.text_field :account_number, placeholder: "Account Number...", :class => "input-xlarge"
+  
+      = f.submit "Submit", class: "btn btn-large btn-primary"

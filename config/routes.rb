@@ -51,6 +51,7 @@ Cyclone::Application.routes.draw do
    root :to => 'home#index'
    resources :users
    resources :sessions, only: [:new, :create, :destroy]
+   resources :bankaccounts, only: [:create, :destroy]
    match '/about', to: 'home#about'
    match '/help', to: 'home#help'
    match '/signup', to: 'users#new'
