@@ -49,9 +49,12 @@ Cyclone::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
    root :to => 'home#index'
-   resources :users
+   resources :users do
+    get :autocomplete_name, :on => :collection
+  end
    resources :sessions, only: [:new, :create, :destroy]
    resources :bankaccounts, only: [:create, :destroy]
+   resources :transfers
    match '/about', to: 'home#about'
    match '/help', to: 'home#help'
    match '/signup', to: 'users#new'

@@ -1,0 +1,23 @@
+%li
+  .content
+    %h3.left
+      The account you transferred from:
+      %span.small= transfer.from
+    .clear
+    %h3.left
+      The account you transferred to:
+      %span.small= transfer.to
+    .clear
+    %h3.left 
+      Recipient:  
+      %span.small= User.find(transfer.to_user_id).name
+    .clear
+    %h3.left
+      Amount: 
+      %span.small= number_to_currency(transfer.amount)
+    .clear
+    %h3.left
+      Status:
+      %span.small= transfer.status
+      %span.label.label-success Success
+    .clear

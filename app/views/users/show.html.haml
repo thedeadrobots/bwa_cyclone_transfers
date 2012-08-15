@@ -5,8 +5,8 @@
       %h1= @user.name
 
   .span8
-    = render 'shared/bankaccount_form'
     = unless !current_user?(@user)
+      = render 'shared/bankaccount_form'
       -if @user.bankaccounts.any?
         %h2 
           My Bank Accounts:  

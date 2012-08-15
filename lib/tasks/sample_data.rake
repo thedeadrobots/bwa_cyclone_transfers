@@ -28,5 +28,19 @@ namespace :db do
                           account_name: account_name ) 
       end
     end
+    
+    users = User.all
+    users.each do |user|
+      3.times do
+        random = rand(1..99)
+        to_user = User.find(random)
+        to = to_user.bankaccounts.first.account_number
+        from = user.bankaccounts.first.account_number
+        amount = rand(100) + (1/rand(1..10).to_f * 100).to_i / 100.to_f
+        status = 'successful'
+        to_user_id = to_user.id
+        user.transfers.create!(to: to, from: from, amount: amount, status: status, to_user_id: to_user_id)
+      end
+    end
   end
 end

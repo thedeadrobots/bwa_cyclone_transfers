@@ -1,0 +1,15 @@
+.row
+  %aside.span4
+    %section
+      =image_tag("/mysteryman.jpg", :class => "gravatar")
+      %h1= current_user.name
+
+  .span8
+    ~ unless !current_user?(@user)
+      -if @user.transfers.any?
+        %h2 
+          Transfer History:  
+          ~@user.transfers.count
+          Listed
+        %ol.transfers
+          ~render @transfers

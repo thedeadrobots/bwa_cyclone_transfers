@@ -50,7 +50,8 @@ class UsersController < ApplicationController
   
   def search
     #@users = User.paginate(page: params[:page], :conditions => "email = '#{params[:search]}'")
-    @users = User.find(:all, :conditions => "email = '#{params[:search]}'")
+    
+    @users = User.find(:all, :conditions => "name = '#{params[:search]}'")
   
     render :partial => 'users/search_results'
   end
