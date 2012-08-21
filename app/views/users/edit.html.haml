@@ -2,8 +2,11 @@
 
 .form-horizontal
   = form_for @user do |f|
+
     = render 'shared/error_messages', :object => f.object
     = render 'fields', :f => f
-
+    %p 
+      Admin User: 
+      = @user.admin
     = f.submit :value => "Update Profile", :class => "btn btn-primary"
 	

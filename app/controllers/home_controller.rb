@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   
   def index
     @title = 'Home'
+    @user = current_user
   end
 
   def about 

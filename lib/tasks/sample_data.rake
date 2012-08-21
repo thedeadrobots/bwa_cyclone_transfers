@@ -4,6 +4,7 @@ namespace :db do
     
     User.create!(name: "John Smith",
                  email: "cycloneuser@cyclonetransfers.com",
+                 admin: 0,
                  password: "foobar",
                  password_confirmation: "foobar")
     99.times do |n|
@@ -12,6 +13,7 @@ namespace :db do
       password  = "password"
       User.create!(name: name,
                    email: email,
+                   admin: 0,
                    password: password,
                    password_confirmation: password)
     end

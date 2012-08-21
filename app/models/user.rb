@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   after_create :create_remember_token
   #before_save :create_remember_token
   before_save { |user| user.email = email.downcase }
-  attr_accessible :email, :name, :password, :password_confirmation, :profile_statement
+  attr_accessible :email, :name, :password, :password_confirmation, :profile_statement, :admin
   has_secure_password
   has_many :bankaccounts
   has_many :transfers
