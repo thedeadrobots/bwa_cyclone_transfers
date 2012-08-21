@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815185947) do
+ActiveRecord::Schema.define(:version => 20120821172112) do
 
   create_table "bankaccounts", :force => true do |t|
     t.integer  "account_number"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120815185947) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.string   "profile_statement"
+    t.boolean  "admin"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
