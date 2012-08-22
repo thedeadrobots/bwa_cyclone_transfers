@@ -1,4 +1,44 @@
-%h1 Help
 
-%p This is a intentionally broken Ruby on Rails application, developed for learning
-%a href="http://www.twitter.com/fridaygoldsmith" @fridaygoldsmith
+%h1 Vulnerability Wrap-up:
+%h3 This is a intentionally broken Ruby on Rails application, developed for learning
+%p
+%p
+.alert.lead Spoilers Ahead! Close this page if you don't want to cheat!
+
+%ol
+  %li.lead SQLi exists on the search field on the users page. (' or 1=1 or ')  Rails 3 has specific ways to sanitize input. The first 3 below will properly sanitize input, using bind variables the last query will not and takes direct insertion. That was used for the example.
+  %ul
+    %li 
+      %code
+        User.all(:conditions => ['email = ?', params[:search]]) 
+    %li 
+      %code
+        User.all(:conditions => { :email => params[:search] })
+    %li
+      %code 
+        User.all(:conditions => { :email = ?,  params[:search] })
+    %li 
+      (ignore that backslash after the #, escaping issues)
+      :markdown
+        `User.all(:conditions => email = #\{params[:search]}`
+  %li.lead If you are able to inject in the previous example, you can get the database to dump the entire users table with the database-stored session token.  If you edit your cookies and change the remember_token cookie to the new value, you can hijack any other users session
+  %li.lead The settings page has a text area that allows you to input information about yourself and use basic html tags. This creates a stored XSS vulnerability.  Generally rails will automatically sanitize any output unless you tell it not to.  I told it not to here and it dumps it out as raw data.
+  %li.lead File upload vulnerabilities. illustrates vulnerability when original files are left in temp directories or uploaded to rails_root/public/upload.  Can be accessed by just guessing the URL.
+  %ul  
+    %li.lead
+      %a{href: "http://#{@ip}/uploads/bankstatement-15.pdf"} http://#{@ip}/uploads/bankstatement-15.pdf
+    %li.lead  
+      %a{href: "http://#{@ip}/uploads/bankstatement-47.pdf"} http://#{@ip}/uploads/bankstatement-47.pdf
+    %li.lead  
+      %a{href: "http://#{@ip}/uploads/bankstatement-88.pdf"} http://#{@ip}/uploads/bankstatement-88.pdf
+    %li.lead etc.
+  %li.lead 
+    Mass assignment vulnerability occurs when the controller is allowed to accept all parameters from a CRUD action.  Generally many applications allow all fields to be mass assigned because its easier to CRUD using params[:params].  This vulnerability/exploit became famous a few months ago: 
+    %a{href: "https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation"} https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation.  
+  %br
+  %p.lead 
+    %b Mitigation: 
+    You can control which fields are mass assigned by using the attr_accessible option in your models, anything not in attr_accessible will throw an error saying they can't be mass assigned. I allowed an admin field to be mass assigned, so this exploit will allow for the creation of a brand new user with the admin option set to true (boolean). :
+  %pre curl -d   "user[email]=cyclone00000@cyclonetransfers.com&user[password]=foobar&user[password_confirmation]=foobar&user[name]=John%20Smith&user[admin]= " localhost:3000/users
+  %li.lead The creation of an admin user will allow you to see every transaction that has happened on cyclone transfers. 
+

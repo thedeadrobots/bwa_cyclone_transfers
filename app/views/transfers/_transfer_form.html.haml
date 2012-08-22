@@ -7,9 +7,9 @@
       %br
       
       = f.label "Which account do you want to transfer from:"
-      = f.collection_select(:from, current_user.bankaccounts, :account_number, :account_balance)
+      = f.collection_select(:from, current_user.bankaccounts, :account_number, :account_balance, { :prompt => "Choose Account..." }, { "style" => "width:400px" })
       = f.label "Recipient:"
-      = f.collection_select(:to_user_id, User.find(:all), :id, :name)
+      = f.collection_select(:to_user_id, User.find(:all), :id, :name, { :prompt => "Choose Recipient..." }, { "style" => "width:400px" })
 
       = f.label "Amount"
       = f.text_field(:amount)

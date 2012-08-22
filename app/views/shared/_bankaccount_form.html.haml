@@ -8,6 +8,7 @@
       = f.text_field :account_name, placeholder: "Account Name...", :class => "input-xlarge"
       = f.text_field :account_number, placeholder: "Account Number...", :class => "input-xlarge"
       %p Verify Your Account by Uploading a Bank Statement:
+      %p Note: If you don't do this now, you'll have to delete the account and add it again.
       = f.file_field :bankstatement
   
       = f.submit "Submit", class: "btn btn-large btn-primary"

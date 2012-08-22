@@ -1,34 +1,32 @@
 .row
   %aside.span4
     %section
-      =image_tag("/mysteryman.jpg", :class => "gravatar")
-      %h1= current_user.name
-
-  - if @admin
+      -if @user.avatar
+        =image_tag("/"+@user.avatar, :class => "gravatar")
+      -if !@user.avatar
+        =image_tag("/mysteryman.jpg", :class => "gravatars")
+      %h1= @user.name
+  - if @admin = 'true'
     .span8
       %h1 Admin Panel
       %p  
         Total Transfers: 
         ~@all_transfers.count
       ~render 'admin_transfer'
-
-  - if @admin.nil?
+  - else
     .span8
       ~ unless !current_user?(@user)
-        = render 'transfer_form'
+        ~ render 'transfer_form'
         %h1 Transfers I've Received
         -if @transfers_to_me.any?
           Transfer History:  
           ~@transfers_to_me.count
           %ol.transfers
             ~render 'transfers_to_me'
-
-
         %h1 Transfers I've Made
-        -if @user.transfers.any?
+        -if @transfers.any?
           Transfer History:  
-          ~@user.transfers.count
-          Listed
+          ~@transfers.count
       
         %ol.transfers
-          ~render @transfers
+          ~render 'transfer'

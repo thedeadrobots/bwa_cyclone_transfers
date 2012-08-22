@@ -1,10 +1,11 @@
 
 .hero-unit.masthead
   %h1 Welcome to Cyclone.
-  %p A new way to transfer money to your friends!
+  %p.lead A new way to transfer money to your friends!
   - if @user
     %a{:class => "btn btn-primary btn-large", :href => transfers_path } Transfer Money Now!
   - if !@user
     %a{:class => "btn btn-primary btn-large", :href => signup_path } Sign Up!
 .alert.alert-error
   %h1 CAUTION: This is an intentionally broken web application.  Please do NOT use any real information
+%pre please add to your hosts file: #{@ip}   cyclone.local

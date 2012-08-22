@@ -1,26 +1,18 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Account Used:
+      %th Account money sent to:
+      %th Who I gave money to:
+      %th Amount:
+      %th Status
+  %tbody 
+  - @transfers.each do |transfer|
+    %tr
+      %td= transfer.from
+      %td= transfer.to
+      %td= User.find(transfer.to_user_id).name
+      %td= number_to_currency(transfer.amount)
+      %td 
+        %span.label.label-success Success
 
-
-%li
-  .content
-    %h3.left
-      The account you transferred from:
-      %span.small= transfer.from
-    .clear
-    %h3.left
-      The account you transferred to:
-      %span.small= transfer.to
-    .clear
-    %h3.left 
-      Recipient:  
-      %span.small= User.find(transfer.to_user_id).name
-      %span.small= transfer.id
-    .clear 
-    %h3.left
-      Amount: 
-      %span.small= number_to_currency(transfer.amount)
-    .clear
-    %h3.left
-      Status:
-      %span.small= transfer.status
-      %span.label.label-success Success
-    .clear

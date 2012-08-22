@@ -26,7 +26,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+gem 'rdiscount'
 gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
 gem 'haml'

@@ -3,7 +3,7 @@
 .left { float: left; }
 .clear { clear: both; }
 .right { float: right; }
-.small {font-size: .7em; }
+.small {font-size: .7em; float:right; }
 
 .round {
   margin-top:20px;
@@ -29,7 +29,7 @@
 }
 
 .field-transfer{
-width:300px;
+
 }
 /* sidebar */
 
@@ -108,10 +108,25 @@ aside {
 .add-account {
 	padding:20px;
 	background: #f9f9f9;
+	margin: 0 0 40px 0;
 	
 }
 
 footer {
-  background: #f9f9f9;
+  min-height:100px;
+  font-size: 18px;
+  padding:20px;
+}
 
+footer p {
+  font-size: 18px;
+  text-align: center;
+
+}
+ol li {
+margin:10px 0 10px 0;
+}
+
+#main {
+min-height: 500px
 }

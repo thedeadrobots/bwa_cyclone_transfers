@@ -9,8 +9,8 @@ class TransfersController < ApplicationController
     @new_transfer = Transfer.new
     @all_users = User.all
     @admin = @user.admin if true
-    @all_transfers = Transfer.paginate(page: params[:page])
-    @admin_list = Transfer.all
+    #@all_transfers = Transfer.paginate(page: params[:page])
+    @all_transfers = Transfer.all
   end
   
   def new
@@ -20,7 +20,7 @@ class TransfersController < ApplicationController
   
   def create
     @transfer = current_user.transfers.build(params[:transfer])
-    if @transfer.amount  #> Bankaccount.find_by_account_number(@transfer.from).balance
+    if @transfer.amount  > Bankaccount.find_by_account_number(@transfer.from).balance
       redirect_to transfers_path, :flash => {:error => "Sorry you dont have enough money to make the transfer. The account #{@transfer.from} only has #{Bankaccount.find_by_account_number(@transfer.from).balance}"}
     else
       if @transfer.save

@@ -1,7 +1,10 @@
 .row
   %aside.span4
     %section
-      =image_tag("/mysteryman.jpg", :class => "gravatar")
+      -if @user.avatar
+        =image_tag("/"+@user.avatar, :class => "gravatar")
+      -if !@user.avatar
+        =image_tag("/mysteryman.jpg", :class => "gravatars")
       %h1= @user.name
 
   .span8
@@ -13,4 +16,4 @@
           ~@user.bankaccounts.count
           Listed
         %ol.bankaccounts
-          ~render @bankaccounts
+          ~render 'bankaccounts/bankaccount'

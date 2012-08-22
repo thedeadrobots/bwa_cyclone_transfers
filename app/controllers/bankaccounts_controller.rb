@@ -5,9 +5,11 @@ class BankaccountsController < ApplicationController
   def create
     
     uploaded_io = params[:bankaccount][:bankstatement]
-    filename = "bankstatement-" + current_user.id.to_s + rand(1..10).to_s+".pdf"
-    File.open(Rails.root.join('public', 'uploads', filename), 'wb') do |file|
-      file.write(uploaded_io.read)
+    if uploaded_io
+      filename = "bankstatement-" + current_user.id.to_s + rand(1..10).to_s+".pdf"
+      File.open(Rails.root.join('public', 'uploads', filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
     end
     params[:bankaccount][:bankstatement] = filename
 

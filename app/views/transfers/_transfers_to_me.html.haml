@@ -1,20 +1,16 @@
-- @transfers_to_me.each do |t|
-  %li
-    .content
-      %h3.left
-        The person who transferred you money:
-        %span.small= User.find(t.user_id).name
-      .clear
-      %h3.left
-        The amount they transferred you:
-        %span.small= number_to_currency(t.amount)
-      .clear
-      %h3.left 
-        The account they transferred the money into:
-        %span.small= t.to
-      .clear
-      %h3.left
-        Status:
-        %span.small= t.status
+%table.table.table-hover
+  %thead
+    %tr
+      %th Who gave me money
+      %th Which account received it?
+      %th How much?
+      %th Status
+  %tbody 
+  - @transfers_to_me.each do |t|
+    %tr
+      %td= User.find(t.user_id).name
+      %td= t.to
+      %td= number_to_currency(t.amount)
+      %td 
         %span.label.label-success Success
-      .clear
+

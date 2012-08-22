@@ -9,9 +9,12 @@
 %ul.users
   -@users.each do |user|
     %li
-      = image_tag("/mysteryman.jpg", :class => "gravatar")
+      -if user.avatar
+        =image_tag("/"+user.avatar, :class => "gravatar")
+      -if !user.avatar
+        =image_tag("/mysteryman.jpg", :class => "gravatars")
       = link_to user.name, user
       %p= raw user.profile_statement
-		
+
 = will_paginate
 	

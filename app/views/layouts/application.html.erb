@@ -51,9 +51,9 @@
           <li id="fat-menu" class="dropdown">
 	  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= current_user.name.pluralize %> Account <b class="caret"></b></a>
 	     <ul class="dropdown-menu">
-                <li><%= link_to "Bank Accounts", current_user  %></li>
+                <li><%= link_to "My Bank Accounts", current_user  %></li>
                 <li><%= link_to "My Transfers", transfers_path %></li>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "My Settings", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Sign out", signout_path, method: "delete" %>
@@ -72,16 +72,18 @@
     <div class="container">
       
 	<section class="round">
+      <div id="main">
         <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
+          <div class="alert lead alert-<%= key %>"><%= value %> </div>
         <% end %>
        
               <%= yield %>
         
       
-
+      </div>
       <footer>
         <p>&copy; Cyclone Transfers, INC. 2012</p>
+        <p><%= link_to "Home", root_path %> &bull; <%= link_to "About", about_path %> &bull; <%= link_to "Help", help_path %> &bull; <%= link_to "Sign In", signin_path %> </p>
       </footer>
 
     </div> <!-- /container -->

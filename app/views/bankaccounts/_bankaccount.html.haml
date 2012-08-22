@@ -1,26 +1,25 @@
-%li
-  %h3.left 
-    Account Name:  
-    %span.small= bankaccount.account_name.capitalize
-  .clear
-  %h3.left
-    Account Number:
-    %span.small= bankaccount.account_number
-  .clear
-  %h3.left 
-    Account Balance: 
-    %span.small= number_to_currency(bankaccount.balance)
-  .clear
-  %p
-    = link_to "Delete", bankaccount, method: :delete, data: { confirm: "Are you sure?" }, title: bankaccount.account_number
-    &nbsp; Account Created: 
-    = time_ago_in_words(bankaccount.created_at)
-    ago
-    %p
-      - if !bankaccount.bankstatement.nil?
-        %span.small 
-          = link_to(bankaccount.bankstatement, '/uploads/'+bankaccount.bankstatement)
-        %span.label.label-success Verified
-      - if bankaccount.bankstatement.nil?
-        %span.label.label-warning Not Verified
-    
+%table.table.table-hover
+  %thead
+    %tr
+      %th Account Name:
+      %th Account Number:
+      %th Balance:
+      %th Actions:
+      %th Verification:
+      %th Created:
+  %tbody 
+  - @bankaccounts.each do |bankaccount|
+    %tr
+      %td= bankaccount.account_name.capitalize
+      %td= bankaccount.account_number
+      %td= number_to_currency(bankaccount.balance)
+      %td= link_to "Delete", bankaccount, method: :delete, data: { confirm: "Are you sure?" }, title: bankaccount.account_number
+      %td 
+        -if !bankaccount.bankstatement.nil?
+          =link_to(bankaccount.bankstatement, '/uploads/'+bankaccount.bankstatement)
+          %span.label.label-success Verified
+        -if bankaccount.bankstatement.nil?
+          %span.label.label-warning Not Verified 
+      %td 
+        =time_ago_in_words(bankaccount.created_at)
+        ago

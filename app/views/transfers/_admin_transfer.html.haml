@@ -1,25 +1,20 @@
 
-%ol.transfers
-  -@admin_list.each do |transfer|
-    %li
-      .content
-        %h3.left
-          Transfer from:
-          = User.find(transfer.user_id).name 
-          Account:
-          %span.small= transfer.from
-        .clear
-        %h3.left
-          To:
-          = User.find(transfer.to_user_id).name
-          Account:
-          %span.small= transfer.to
-        .clear
-        %h3.left
-          Amount: 
-          %span.small= number_to_currency(transfer.amount)
-        .clear
-        %h3.left
-          Status:
-          %span.label.label-success Success
-        .clear
+%table.table.table-hover
+  %thead
+    %tr
+      %th From:
+      %th From Account:
+      %th To:
+      %th To Account:
+      %th Amount:
+      %th Status
+  %tbody 
+  - @all_transfers.each do |transfer|
+    %tr
+      %td= User.find(transfer.user_id).name
+      %td= transfer.from
+      %td= User.find(transfer.to_user_id).name
+      %td= transfer.to
+      %td= number_to_currency(transfer.amount)
+      %td 
+        %span.label.label-success Success
