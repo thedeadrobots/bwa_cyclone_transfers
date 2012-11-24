@@ -6,7 +6,7 @@
       -if !@user.avatar
         =image_tag("/mysteryman.jpg", :class => "gravatars")
       %h1= @user.name
-  - if @admin == 'true'
+  - if @admin == true
     .span8
       %h1 Admin Panel
       %p  
