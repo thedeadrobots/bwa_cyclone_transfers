@@ -51,9 +51,14 @@ class UsersController < ApplicationController
   def search
     #@users = User.paginate(page: params[:page], :conditions => "email = '#{params[:search]}'")
     
-    @users = User.find(:all, :conditions => "name = '#{params[:search]}'")
-  
-    render :partial => 'users/search_results'
+    #@users = User.find(:all, :conditions => "name = '#{params[:search]}'")
+    @users = User.all(:conditions => "email LIKE '%#{params[:search]}%' OR name LIKE '%#{params[:search]}%'")
+    if params[:search].match /\W/
+      render 'users/search_results_inj'
+    else
+      render 'users/search_results'
+    end
+
   end
   
   

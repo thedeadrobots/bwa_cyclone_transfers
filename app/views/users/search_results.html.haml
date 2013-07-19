@@ -1,0 +1,27 @@
+
+#search
+  = render :partial => 'users/search'
+
+
+%h1 All Users
+
+
+%table{:class => "table"}
+  %tbody
+    %tr
+      %th Photo
+      %th Name
+      %th Email
+      %th Statement
+    -@users.each do |user|
+   
+      %tr
+        -if user.avatar
+          %td= image_tag("/"+user.avatar, :class => "gravatar")
+        -if !user.avatar
+          %td= image_tag("/mysteryman.jpg", :class => "gravatars")
+        %td= link_to user.name, user
+        %td= link_to user.email, user
+        %td= raw user.profile_statement
+        
+

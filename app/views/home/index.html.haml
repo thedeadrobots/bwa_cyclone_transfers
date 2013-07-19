@@ -1,11 +1,19 @@
 
 .hero-unit.masthead
+  =image_tag "/logo.png", :class=> "left" , :size=>'200x260'
   %h1 Welcome to Cyclone.
   %p.lead A new way to transfer money to your friends!
   - if @user
+    %h3
+      Welcome,  
+      ~@user.name
     %a{:class => "btn btn-primary btn-large", :href => transfers_path } Transfer Money Now!
   - if !@user
     %a{:class => "btn btn-primary btn-large", :href => signup_path } Sign Up!
 .alert.alert-error
   %h1 CAUTION: This is an intentionally broken web application.  Please do NOT use any real information
-%pre please add to your hosts file: #{@ip}   cyclone.local
+
+.alert.alert-info
+  %h1 Account:  You can sign up on your own, or use an existing one
+  %h2 user: cycloneuser-3@cyclonetransfers.com
+  %h2 password: password
