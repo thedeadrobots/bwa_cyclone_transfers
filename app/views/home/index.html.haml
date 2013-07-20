@@ -4,9 +4,13 @@
   %h1 Welcome to Cyclone.
   %p.lead A new way to transfer money to your friends!
   - if @user
-    %h3
-      Hi,  
+    -if @admin == 'true'
+      %h3 Hi, Admin!
+    -else
+      %h3 
+      Hi, 
       ~@user.name
+      %br
     %a{:class => "btn btn-primary btn-large", :href => transfers_path } Transfer Money Now!
   - if !@user
     %a{:class => "btn btn-primary btn-large", :href => signup_path } Sign Up!

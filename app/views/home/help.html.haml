@@ -43,6 +43,6 @@
   %p.lead 
     %b Mitigation: 
     You can control which fields are mass assigned by using the attr_accessible option in your models, anything not in attr_accessible will throw an error saying they can't be mass assigned. I allowed an admin field to be mass assigned, so this exploit will allow for the creation of a brand new user with the admin option set to true (boolean). :
-  %pre curl -d   "user[email]=cyclone00000@cyclonetransfers.com&user[password]=foobar&user[password_confirmation]=foobar&user[name]=John%20Smith&user[admin]= " localhost:3000/users
+  %pre curl -d   "user[email]=cyclone00000@cyclonetransfers.com&user[password]=foobar&user[password_confirmation]=foobar&user[name]=John%20Smith&user[admin]=true" localhost:3000/users
   %li.lead The creation of an admin user will allow you to see every transaction that has happened on cyclone transfers. 
 

@@ -5,6 +5,10 @@ class HomeController < ApplicationController
     @title = 'Home'
     @user = current_user
     @ip = local_ip
+    if current_user
+      @admin = current_user.admin ? 'true' : 'false'
+    end
+
   end
 
   def about 
