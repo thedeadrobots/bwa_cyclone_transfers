@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     puts params.inspect
     #find(:all, :conditions => "email = #{params[:search]}" )
     #User.all(:conditions => {:email => search })
-    User.all(:conditions => "name LIKE '%#{params[:search]}%'")
+    User.all(:conditions => "email LIKE '%#{params[:search]}%' OR name LIKE '%#{params[:search]}%'")
   end
   
   

@@ -14,23 +14,34 @@ class TransfersController < ApplicationController
   end
   
   def new
-
+   
+    @amount = 0
     
   end
   
   def create
-    @transfer = current_user.transfers.build(params[:transfer])
-    if @transfer.amount  > Bankaccount.find_by_account_number(@transfer.from).balance
-      redirect_to transfers_path, :flash => {:error => "Sorry you dont have enough money to make the transfer. The account #{@transfer.from} only has #{Bankaccount.find_by_account_number(@transfer.from).balance}"}
+    #debug(params[:transfer])
+    
+
+
+    if (params[:transfer][:from].blank? || params[:transfer][:to_user_id].blank? || params[:transfer][:amount].blank?) 
+      redirect_to transfers_path, :flash => {:error => "Please Fill in All Fields!"}
+      #@res = params[:transfer][:to_user_id].blank?
+      #raise @res.inspect 
     else
-      if @transfer.save
-        redirect_to transfers_path, :flash => 
-        { :success => "You Transferred Succesfully  $#{@transfer.amount} from  #{@transfer.from} to  #{User.find(@transfer.to_user_id).name}" }
+      @transfer = current_user.transfers.build(params[:transfer])
+     
+      if @transfer.amount  > Bankaccount.find_by_account_number(@transfer.from).balance
+        redirect_to transfers_path, :flash => {:error => "Sorry you dont have enough money to make the transfer. The account #{@transfer.from} only has #{Bankaccount.find_by_account_number(@transfer.from).balance}"}
       else
-        redirect_to 'transfers_path', :flash => { :error => "Error on Transfer" }
+        if @transfer.save
+          redirect_to transfers_path, :flash => 
+          { :success => "You Transferred Succesfully  $#{@transfer.amount} from  #{@transfer.from} to  #{User.find(@transfer.to_user_id).name}" }
+        else
+          redirect_to 'transfers_path', :flash => { :error => "Error on Transfer" }
+        end
       end
     end
+  
   end
-  
-  
 end

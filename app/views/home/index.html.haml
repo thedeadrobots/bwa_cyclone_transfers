@@ -5,7 +5,7 @@
   %p.lead A new way to transfer money to your friends!
   - if @user
     %h3
-      Welcome,  
+      Hi,  
       ~@user.name
     %a{:class => "btn btn-primary btn-large", :href => transfers_path } Transfer Money Now!
   - if !@user

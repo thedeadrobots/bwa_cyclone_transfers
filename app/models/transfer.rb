@@ -5,6 +5,9 @@ class Transfer < ActiveRecord::Base
   before_save :pick_account
 
   validates :amount, :numericality => true
+  validates :to_user_id, :presence => true
+  validates :from, :presence => true
+  
   default_scope order: 'transfers.created_at DESC'
   after_save :update_balance
   
