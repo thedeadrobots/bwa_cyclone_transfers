@@ -8,15 +8,18 @@
       %h3 Welcome, Heisenberg!
       %a{:class => "btn btn-primary btn-large", :href => new_leader_path } Let's Cook!
     -else
+      =image_tag "/logo.png", :class=> "left" , :size=>'200x260'
       %h1 Welcome to Cyclone!
       %p.lead A new way to transfer money to your friends!
-      =image_tag "/logo.png", :class=> "left" , :size=>'200x260'
       %h3 
       Hi, 
       ~@user.name
       %br
       %a{:class => "btn btn-primary btn-large", :href => transfers_path } Transfer Money Now!
   - if !@user
+    =image_tag "/logo.png", :class=> "left" , :size=>'200x260'
+    %h1 Welcome to Cyclone!
+    %p.lead A new way to transfer money to your friends!
     %a{:class => "btn btn-primary btn-large", :href => signup_path } Sign Up!
 .alert.alert-error
   %h1 CAUTION: This is an intentionally broken web application.  Please do NOT use any real information
