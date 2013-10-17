@@ -1,0 +1,10 @@
+%h1 Congratulations!
+%h3 Enter your name to join the leaderboard.
+.form-horizontal
+  =form_for @leader do |f|
+    %fieldset
+      .control-group
+        = f.label :name
+        = f.text_field :name, :class => "input=xlarge"
+
+        =f.submit :value => "Join Leaderboard!", :class => "btn btn-primary"

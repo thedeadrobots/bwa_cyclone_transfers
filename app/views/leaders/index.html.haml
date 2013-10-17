@@ -1,0 +1,31 @@
+%h1 Cyclone Leaderboard
+
+
+%h3 Mass-assign leaders
+%table.table
+  -@mass_assign_leaders.each do |ma_leader|
+    %tr
+      %td 
+        =image_tag("/mysteryman.jpg", :class => "gravatars")
+      %td 
+        =ma_leader.name
+      %td 
+        =ma_leader.ip
+      %td 
+        =ma_leader.created_at
+
+
+%h3 Cookie Theft Leaders
+%table.table
+  -@cookie_theft_leaders.each do |leader|
+    %tr
+      %td 
+        =image_tag("/mysteryman.jpg", :class => "gravatars")
+      %td 
+        =leader.name
+      %td 
+        =leader.ip
+      %td 
+        =leader.created_at
+
+

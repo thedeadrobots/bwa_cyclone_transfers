@@ -1,17 +1,21 @@
 
 .hero-unit.masthead
-  =image_tag "/logo.png", :class=> "left" , :size=>'200x260'
-  %h1 Welcome to Cyclone.
-  %p.lead A new way to transfer money to your friends!
   - if @user
     -if @admin == 'true'
-      %h3 Hi, Admin!
+      =image_tag "/heisenberg.jpg", :class=>"left", :size=> '200x260'
+      %h1 Welcome Heisenberg.
+      %p.lead A new way to transfer money to your friends!
+      %h3 Welcome, Heisenberg!
+      %a{:class => "btn btn-primary btn-large", :href => new_leader_path } Let's Cook!
     -else
+      %h1 Welcome to Cyclone!
+      %p.lead A new way to transfer money to your friends!
+      =image_tag "/logo.png", :class=> "left" , :size=>'200x260'
       %h3 
       Hi, 
       ~@user.name
       %br
-    %a{:class => "btn btn-primary btn-large", :href => transfers_path } Transfer Money Now!
+      %a{:class => "btn btn-primary btn-large", :href => transfers_path } Transfer Money Now!
   - if !@user
     %a{:class => "btn btn-primary btn-large", :href => signup_path } Sign Up!
 .alert.alert-error

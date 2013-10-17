@@ -55,15 +55,16 @@ Cyclone::Application.routes.draw do
    resources :sessions, only: [:new, :create, :destroy]
    resources :bankaccounts, only: [:create, :destroy]
    resources :transfers
+   resources :leaders, only: [:new, :create]
    match '/about', to: 'home#about'
    match '/help', to: 'home#help'
    match '/signup', to: 'users#new'
    match '/signin', to: 'sessions#new'
-   match '/signout', to: 'sessions#destroy' 
+   match '/signout', to: 'sessions#destroy'
    match '/upload', to: 'bankaccounts#upload'
-   
+   match '/leaderboard', to: 'leaders#index'
    match '/search', to: 'users#search'
-   
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

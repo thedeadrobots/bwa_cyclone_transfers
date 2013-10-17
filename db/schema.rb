@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822141720) do
+ActiveRecord::Schema.define(:version => 20131017161355) do
 
   create_table "bankaccounts", :force => true do |t|
     t.integer  "account_number"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20120822141720) do
     t.datetime "updated_at",     :null => false
     t.string   "account_name"
     t.string   "bankstatement"
+  end
+
+  create_table "leaders", :force => true do |t|
+    t.string   "name"
+    t.string   "ip"
+    t.string   "hack_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "transfers", :force => true do |t|
@@ -44,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20120822141720) do
     t.string   "profile_statement"
     t.boolean  "admin"
     t.string   "avatar"
+    t.string   "ip_address"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
